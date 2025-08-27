@@ -3,7 +3,6 @@ import json
 import asyncio
 import logging
 import sqlite3
-from datetime import datetime
 from telethon import TelegramClient, events
 from telethon.errors import SessionPasswordNeededError, RPCError
 
@@ -79,7 +78,8 @@ async def run_user_bot(config):
 
         elif text.startswith("⌯.info"):
             reply = (
-                f"❀ User Info:\n❀ Name: {config.get('name')}\n❀ Cycle Delay: {user_state['cycle']} min\n"
+                f"❀ User Info:\n❀ Name: {config.get('name')}\n"
+                f"❀ Cycle Delay: {user_state['cycle']} min\n"
             )
             await event.respond(reply)
 
@@ -187,4 +187,4 @@ if __name__ == "__main__":
         asyncio.run(main())
     except KeyboardInterrupt:
         logger.info("Shutdown requested. Exiting.")
-          
+        
